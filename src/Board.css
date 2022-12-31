@@ -1,0 +1,14 @@
+.board {
+    display: grid;
+    width: 90vmin;
+    height: 90vmin;
+    border-radius: 3vmin;
+    border: 15px solid #803500;
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-columns: repeat(8, 1fr);
+    background: #4d934cbd;
+    filter: drop-shadow(0px 0px 6px black);
+    overflow: hidden;
+    column-gap: 0.7vmin;
+    row-gap: 0.7vmin;
+}

@@ -1,0 +1,96 @@
+.square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4C934C;
+    cursor: pointer;
+}
+
+.marker {
+    width: 75%;
+    height: 75%;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    /* box-shadow: inset 2px 2px #19381f26, 2px 2px #19381f00; */
+    box-shadow: inset 3px 2px 6px 3px rgb(0 0 0 / 50%);
+    /* opacity: 0.1; */
+    opacity: 0.75;
+    transition: 0.2s ease-in-out;
+	/* transition-timing-function: ease-in-out;
+	transition-duration: 0.5s;
+	transition-property: transform;
+	transition-delay: 0.5s; */
+}
+
+.square.invalid > .marker {
+    opacity: 0.25;
+}
+
+.marker.black, .marker.white {
+    /* width: 60%;
+    height: 60%; */
+    transition: 0.2s ease-in-out, border 0.5s ease-in-out;
+    width: calc(75% - 1.75vmin);
+    height: calc(75% - 1.75vmin);
+    /* box-shadow: inset 3px 2px 6px 3px rgb(0 0 0 / 23%); */
+}
+
+.marker.black, .marker.white, .black-to-move > .square:not(.invalid):hover > .marker.blank, .white-to-move > .square:not(.invalid):hover > .marker.blank {
+    background-color: transparent;
+}
+
+.marker.black {
+    /* background-color: #df6d21; */
+    border: 1vmin solid black;
+    opacity: 1;
+    transform: scale(1) rotate3d(1, 0, 0, 0deg);
+    animation: bump_black 0.5s;
+}
+
+.marker.white {
+    /* background-color: #df6d21; */
+    border: 1vmin solid white;
+    opacity: 1;
+    transform: scale(1) rotate3d(1, 0, 0, 180deg);
+    animation: bump_white 0.5s;
+}
+
+@keyframes bump_white {
+    0%   {transform: scale(1) rotate3d(1, 0, 0, 0deg)}
+    25%   {transform: scale(1.2) rotate3d(1, 0, 0, 0deg)}
+    50%  {transform: scale(1.2) rotate3d(1, 0, 0, 90deg)}
+    75%   {transform: scale(1.2) rotate3d(1, 0, 0, 180deg)}
+    100% {transform: scale(1) rotate3d(1, 0, 0, 180deg)}
+}
+
+@keyframes bump_black {
+    0%   {transform: scale(1) rotate3d(1, 0, 0, 180deg)}
+    25%   {transform: scale(1.2) rotate3d(1, 0, 0, 180deg)}
+    50%  {transform: scale(1.2) rotate3d(1, 0, 0, 90deg)}
+    75%   {transform: scale(1.2) rotate3d(1, 0, 0, 0deg)}
+    100% {transform: scale(1) rotate3d(1, 0, 0, 0deg)}
+}
+
+.black-to-move > .square:not(.invalid):hover > .marker.blank {
+    /* opacity: 1; */
+    /* background-color: rgba(0, 0, 0, 0.7); */
+    width: calc(75% - 2vmin);
+    height: calc(75% - 2vmin);
+    /* background-color: #df6d21; */
+    border: 1vmin solid black;
+    box-shadow: inset 3px 2px 6px 3px rgb(0 0 0 / 23%);
+    /* filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.9)); */
+    /* box-shadow: inset 2px 2px #19381f00, 2px 2px #19381f26; */
+}
+
+.white-to-move > .square:not(.invalid):hover > .marker.blank {
+    /* opacity: 1; */
+    /* background-color: rgba(255, 255, 255, 0.7); */
+    /* filter: drop-shadow(0px 0px 6px rgba(255, 255, 255, 0.9)); */
+    /* box-shadow: inset 2px 2px #19381f00, 2px 2px #19381f26; */
+    width: calc(75% - 2vmin);
+    height: calc(75% - 2vmin);
+    /* background-color: #df6d21; */
+    border: 1vmin solid white;
+    box-shadow: inset 3px 2px 6px 3px rgb(0 0 0 / 23%);
+}
